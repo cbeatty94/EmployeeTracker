@@ -13,12 +13,23 @@ connection.connect((err) => {
     if (err) throw err;
     console.log('connected!')
     
-    // runTracker();
+    runTracker();
 });
 
-// const runTracker = () => {
-//     inquirer
-//         .prompt({
-
-//         })
-// }
+const runTracker = () => {
+    inquirer
+        .prompt({
+            name: 'action',
+            type: 'rawlist',
+            message: 'What would you like to do?',
+            choices: [
+                'View all employees',
+                'View all employees by department',
+                'View all employees by role',
+                'Add employee',
+                'Add department',
+                'Add role',
+                'Update employee roles'
+            ]
+        })
+}

@@ -3,7 +3,7 @@ const inquirer = require('inquirer')
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    port: 3030,
+    port: 3306,
     user: 'root',
     password: 'password',
     database: 'trackerDB',
@@ -11,12 +11,14 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
     if (err) throw err;
-    runTracker();
+    console.log('connected!')
+    
+    // runTracker();
 });
 
-const runTracker = () => {
-    inquirer
-        .prompt({
-            
-        })
-}
+// const runTracker = () => {
+//     inquirer
+//         .prompt({
+
+//         })
+// }

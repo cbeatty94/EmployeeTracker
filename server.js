@@ -57,6 +57,11 @@ const runTracker = () => {
                 case 'Update employee roles':
                     updateRole();
                     break;
+
+                default:
+                    console.log(`Invalid action: ${answer.action}`);
+                    break;
             }
         })
 }
+

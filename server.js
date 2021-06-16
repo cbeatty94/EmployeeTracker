@@ -6,6 +6,17 @@ const connection = mysql.createConnection({
     port: 3030,
     user: 'root',
     password: 'password',
-    database: '',
+    database: 'trackerDB',
 });
 
+connection.connect((err) => {
+    if (err) throw err;
+    runTracker();
+});
+
+const runTracker = () => {
+    inquirer
+        .prompt({
+            
+        })
+}

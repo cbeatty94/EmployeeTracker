@@ -65,3 +65,7 @@ const runTracker = () => {
         })
 }
 
+const employeeSearch = () => {
+    const query = 
+        'SELECT employee.id, employee.first_name, employee.last_name, employee.manager_id, role.title, role.salary, department.name'
+}

@@ -122,4 +122,11 @@ const roleSearch = () => {
         INNER JOIN role ON (role.id = employee.role_id)
         INNER JOIN department ON (department.id = role.department_id)
         ORDER BY role.id;`
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.log('VIEW ALL EMPLOYEES BY ROLE')
+        console.log('\n')
+        console.table(res);
+        runTracker();
+    })
 }

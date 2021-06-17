@@ -48,27 +48,34 @@ const runTracker = () => {
                 case 'View all employees by role':
                     roleSearch();
                     break;
+
                 case 'Add employee':
                     addEmployee();
                     break;
+
                 case 'View all departments':
                     viewDepartments();
                     break;
+
                 case 'Add department':
                     addDepartment();
                     break;
+
                 case 'View all roles':
                     viewRoles();
                     break;
                 case 'Add role':
                     addRole();
                     break;
+
                 case 'Update employee roles':
                     updateRole();
                     break;
+
                 case 'EXIT':
                     connection.end();
                     break;
+
                 default:
                     console.log(`Invalid action: ${answer.action}`);
                     break;
@@ -78,7 +85,7 @@ const runTracker = () => {
 
 const employeeSearch = () => {
     const query = 
-        `SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, employee.manager_id
+        `SELECT employee.id, employee.first_name, employee.last_name, role.id AS role_id, role.title, role.salary, department.name AS department, department.id AS department_id, employee.manager_id
         FROM employee
         INNER JOIN role ON (role.id = employee.role_id)
         INNER JOIN department ON (department.id = role.department_id)
@@ -94,7 +101,7 @@ const employeeSearch = () => {
 
 const departmentSearch = () => {
     const query =
-        `SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, employee.manager_id
+        `SELECT employee.id, employee.first_name, employee.last_name, role.id AS role_id, role.title, role.salary, department.name AS department, department.id AS department_id, employee.manager_id
         FROM employee
         INNER JOIN role ON (role.id = employee.role_id)
         INNER JOIN department ON (department.id = role.department_id)
@@ -106,4 +113,13 @@ const departmentSearch = () => {
         console.table(res);
         runTracker();
     });
+}
+
+const roleSearch = () => {
+    const query = 
+        `SELECT employee.id, employee.first_name, employee.last_name, role.id AS role_id, role.title, role.salary, department.name AS department, department.id AS department_id, employee.manager_id
+        FROM employee
+        INNER JOIN role ON (role.id = employee.role_id)
+        INNER JOIN department ON (department.id = role.department_id)
+        ORDER BY role.id;`
 }

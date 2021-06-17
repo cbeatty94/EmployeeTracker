@@ -29,7 +29,8 @@ const runTracker = () => {
                 'Add employee',
                 'Add department',
                 'Add role',
-                'Update employee roles'
+                'Update employee roles',
+                'EXIT'
             ]
         })
         .then((answer) => {
@@ -57,7 +58,9 @@ const runTracker = () => {
                 case 'Update employee roles':
                     updateRole();
                     break;
-
+                case 'EXIT':
+                    connection.end();
+                    break;
                 default:
                     console.log(`Invalid action: ${answer.action}`);
                     break;
@@ -79,4 +82,13 @@ const employeeSearch = () => {
         console.table(res);
         runTracker();
     });
+}
+
+const departmentSearch = () => {
+    const query =
+        `SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, employee.manager_id
+        FROM employee
+        INNER JOIN role ON (role.id = employee.role_id)
+        INNER JOIN department ON (department.id = role.department_id)
+        ORDER BY department.id;`
 }

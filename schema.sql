@@ -76,3 +76,8 @@ ORDER BY role.id;
 SELECT department.name AS department, department.id AS department_id
 FROM department
 ORDER BY department.id;
+
+-- View all roles
+SELECT role.title, role.id AS role_id
+FROM role
+ORDER BY role.id;

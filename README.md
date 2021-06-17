@@ -22,3 +22,5 @@ Update employee roles;
 # Demo
 
 ![employeeTracker](https://user-images.githubusercontent.com/78604328/122438055-4e2c3300-cf68-11eb-8469-44c0f1a416c7.png)
+
+View video demo here: https://drive.google.com/file/d/1j8HtSzvJRr1-oN2QtmSSjheDAxFdxz3z/view?usp=sharing

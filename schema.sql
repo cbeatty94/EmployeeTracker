@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS trackerDB;
 CREATE DATABASE trackerDB;
 USE trackerDB;
 
+-- Create tables
+
 CREATE TABLE department (
 	id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
@@ -27,6 +29,8 @@ CREATE TABLE employee (
     PRIMARY KEY (id)
 );
 
+-- Insert values into tables
+
 INSERT INTO department (name)
 VALUES ('Sales'),
 ('Engineering'),
@@ -47,20 +51,28 @@ VALUES ('Burke', 'Beatty', 1, NULL),
 ('Emma', 'Watson', 5, NULL),
 ('Bob', 'Johnson', 2, 1);
 
+-- View all employees
 SELECT employee.id, employee.first_name, employee.last_name, role.id AS role_id, role.title, role.salary, department.name AS department, department.id AS department_id, employee.manager_id
 FROM employee
 INNER JOIN role ON (role.id = employee.role_id)
 INNER JOIN department ON (department.id = role.department_id)
 ORDER BY employee.id;
 
+-- View all employees by department
 SELECT employee.id, employee.first_name, employee.last_name, role.id AS role_id, role.title, role.salary, department.name AS department, department.id AS department_id, employee.manager_id
 FROM employee
 INNER JOIN role ON (role.id = employee.role_id)
 INNER JOIN department ON (department.id = role.department_id)
 ORDER BY department.id;
 
+-- View all employees by role
 SELECT employee.id, employee.first_name, employee.last_name, role.id AS role_id, role.title, role.salary, department.name AS department, department.id AS department_id, employee.manager_id
 FROM employee
 INNER JOIN role ON (role.id = employee.role_id)
 INNER JOIN department ON (department.id = role.department_id)
 ORDER BY role.id;
+
+-- View all departments
+SELECT department.name AS department, department.id AS department_id
+FROM department
+ORDER BY department.id;

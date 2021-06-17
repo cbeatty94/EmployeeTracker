@@ -64,6 +64,7 @@ const runTracker = () => {
                 case 'View all roles':
                     viewRoles();
                     break;
+
                 case 'Add role':
                     addRole();
                     break;
@@ -132,6 +133,40 @@ const roleSearch = () => {
 }
 
 const addEmployee = () => {
+    const query = 
+    ``
+}
+
+const viewDepartments = () => {
+    const query = 
+        `SELECT department.name AS department, department.id AS department_id
+        FROM department
+        ORDER BY department.id;`
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.log('VIEW ALL DEPARTMENTS')
+        console.log('\n')
+        console.table(res);
+        runTracker();
+    })
+}
+
+const addDepartment = () => {
+    const query = 
+    ``
+}
+
+const viewRoles = () => {
+    const query = 
+    ``
+}
+
+const addRole = () => {
+    const query = 
+    ``
+}
+
+const updateRole = () => {
     const query = 
     ``
 }

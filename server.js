@@ -27,7 +27,9 @@ const runTracker = () => {
                 'View all employees by department',
                 'View all employees by role',
                 'Add employee',
+                'View all departments',
                 'Add department',
+                'View all roles',
                 'Add role',
                 'Update employee roles',
                 'EXIT'
@@ -49,8 +51,14 @@ const runTracker = () => {
                 case 'Add employee':
                     addEmployee();
                     break;
+                case 'View all departments':
+                    viewDepartments();
+                    break;
                 case 'Add department':
                     addDepartment();
+                    break;
+                case 'View all roles':
+                    viewRoles();
                     break;
                 case 'Add role':
                     addRole();

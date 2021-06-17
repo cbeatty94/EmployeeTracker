@@ -34,3 +34,10 @@ VALUES ('Burke', 'Beatty', 1, NULL),
 ('Thomas', 'Maxey', 4, 1)
 ('Emma', 'Watson', 5, NULL)
 
+INSERT INTO role (title, salary, department_id)
+VALUES ('Sales Lead', 100000, 1),
+('Salesperson', 80000, 1),
+('Lead Engineer', 150000, 2),
+('Software Engineer', 110000, 2),
+('Legal Team Lead', 180000, 3)
+

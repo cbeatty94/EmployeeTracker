@@ -41,3 +41,7 @@ VALUES ('Sales Lead', 100000, 1),
 ('Software Engineer', 110000, 2),
 ('Legal Team Lead', 180000, 3)
 
+INSERT INTO department (name)
+VALUES ('Sales'),
+('Engineering'),
+('Legal')

@@ -27,4 +27,10 @@ CREATE TABLE department (
     PRIMARY KEY (id)
 );
 
-INSERT INTO employee
+INSERT INTO employee (first_name, last_name, role_id, manager_id) 
+VALUES ('Burke', 'Beatty', 1, NULL),
+('Emmett', 'Rushtin', 2, 1),
+('Luke', 'Spang', 3, 1),
+('Thomas', 'Maxey', 4, 1)
+('Emma', 'Watson', 5, NULL)
+

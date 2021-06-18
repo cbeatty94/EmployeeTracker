@@ -1,5 +1,7 @@
 const mysql = require('mysql')
 const inquirer = require('inquirer')
+const util = require('util');
+const { allowedNodeEnvironmentFlags } = require('process');
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -8,6 +10,8 @@ const connection = mysql.createConnection({
     password: 'password',
     database: 'trackerDB',
 });
+
+connection.query = util.promisify(connection.query)
 
 connection.connect((err) => {
     if (err) throw err;
@@ -133,8 +137,7 @@ const roleSearch = () => {
 }
 
 const addEmployee = () => {
-    const query = 
-    ``
+    // query for all roles
 }
 
 const viewDepartments = () => {
@@ -152,8 +155,7 @@ const viewDepartments = () => {
 }
 
 const addDepartment = () => {
-    const query = 
-    ``
+   
 }
 
 const viewRoles = () => {
@@ -171,11 +173,41 @@ const viewRoles = () => {
 }
 
 const addRole = () => {
-    const query = 
-    ``
+//    query all departments
 }
 
-const updateRole = () => {
-    const query = 
-    ``
+const updateRole = async () => {
+    const allEmployees = await connection.query (`SELECT * FROM employee`)
+    const allRoles = await connection.query (`SELECT * FROM role`)
+    const employeeChoices = allEmployees.map(person => {
+        return {
+            name: `${person.first_name} ${person.last_name}`,
+            value: person.id
+        }
+    })
+    const roleChoices = allRoles.map(role => {
+        return {
+            name: role.title,
+            value: role.id
+        }
+    })
+    const { employeeID, roleID } = await inquirer.prompt(
+        [
+            {
+                name: 'employeeID',
+                type: 'list',
+                message: 'Choose employee to update role: ',
+                choices: employeeChoices
+            },
+            {
+                name: 'roleID',
+                type: 'list',
+                message: 'Choose new role: ',
+                choices: roleChoices
+            }
+        ]
+    )
+    await connection.query('UPDATE employee SET role_id = ? WHERE id = ?', [roleID, employeeID])
+    console.log('SUCCESSFULLY UPDATED EMPLOYEE')
+    runTracker();
 }
